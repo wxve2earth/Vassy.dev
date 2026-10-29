@@ -1,2 +1,5 @@
 # Vassy.dev
-A little corner of the internet where I share what I do and who I am.
+
+My personal portfolio website showcasing my projects, interests, and a little bit about me.
+
+Live website: [vassy.dev](https://vassy.dev)
