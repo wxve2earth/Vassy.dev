@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Portfolio</title>
+</head>
+<body>
+    <!-- OVERLAY -->
+    <div class="overlaylayer" id="overlaylayer"></div>
+    <div class="overlay" id="overlay">
+        <p class="welcome">Welcome!</p>
+        <p class="welcometext">click anywhere to enter</p>
+    </div>
+    <!--MAIN  -->
+    <div class="main" id="main">
+        <!-- NAVIGATION BAR -->
+        <div class="nav" id="nav">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            <button type="button" class="toggle" id="themeToggle" aria-label="Switch to light mode">
+                <span class="theme-icon sun-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                </span>
+                <span class="theme-icon moon-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+                </span>
+            </button>
+        </div>
+        <!-- SECTIONS -->
+        <div class="sections" id="sections">
+            <!-- HOME PAGE -->
+            <section class="page home-page active" id="home">
+                <div class="herowrap">
+                    <div class="hero">
+                        <div class="heropfp" data-anim="up" style="--delay:0.05s">
+                            <img src="pictures/8947773bc5ba3fc11aebba89413aad63.jpg" alt="pfp">
+                        </div>
+                        <div class="herocontent">
+                            <div class="namerow">
+                                <p class="name" data-anim="down" style="--delay:0.12s">Vassy</p>
+                                <div class="badges" data-anim="down" style="--delay:0.12s">
+                                    <span class="badge" data-tooltip="Certified cat enthusiast">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="m16 9-5.5 5.5L8 12"/><path d="M3.85 8.62a4 4 0 014.78-4.77 4 4 0 016.74 0 4 4 0 014.78 4.78 4 4 0 010 6.74 4 4 0 01-4.77 4.78 4 4 0 01-6.75 0 4 4 0 01-4.78-4.77 4 4 0 010-6.76" />
+                                        </svg>
+                                    </span>
+                                    <span class="badge" data-tooltip="Professional bug creator">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="bio" data-anim="up" style="--delay:0.18s">
+                                <span id="typewriter"></span><span class="cursor">|</span>
+                            </div>
+                            <div class="herolinks">
+                                <a href="https://github.com/wxve2earth" target="_blank" aria-label="GitHub" data-anim="up" style="--delay:0.22s">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor">
+                                        <path d="M280.5 426.5C214.5 418.5 168 371 168 309.5C168 284.5 177 257.5 192 239.5C185.5 223 186.5 188 194 173.5C214 171 241 181.5 257 196C276 190 296 187 320.5 187C345 187 365 190 383 195.5C398.5 181.5 426 171 446 173.5C453 187 454 222 447.5 239C463.5 258 472 283.5 472 309.5C472 371 425.5 417.5 358.5 426C375.5 437 387 461 387 488.5L387 540.5C387 555.5 399.5 564 414.5 558C505 523.5 576 433 576 321C576 179.5 461 64 319.5 64C178 64 64 179.5 64 321C64 432 134.5 524 229.5 558.5C243 563.5 256 554.5 256 541L256 501C249 504 240 506 232 506C199 506 179.5 488 165.5 454.5C160 441 154 433 142.5 431.5C136.5 431 134.5 428.5 134.5 425.5C134.5 419.5 144.5 415 154.5 415C169 415 181.5 424 194.5 442.5C204.5 457 215 463.5 227.5 463.5C240 463.5 248 459 259.5 447.5C268 439 274.5 431.5 280.5 426.5z"/>
+                                    </svg>
+                                </a>
+                                <a href="https://open.spotify.com/user/314le7bbip7cb2er5xwdtpevx2hu?si=fcd0eb322fb84d98" target="_blank" aria-label="Spotify" data-anim="up" style="--delay:0.26s">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor">
+                                        <path d="M320 72C183 72 72 183 72 320C72 457 183 568 320 568C457 568 568 457 568 320C568 183 457 72 320 72zM420.7 436.9C416.5 436.9 413.9 435.6 410 433.3C347.6 395.7 275 394.1 203.3 408.8C199.4 409.8 194.3 411.4 191.4 411.4C181.7 411.4 175.6 403.7 175.6 395.6C175.6 385.3 181.7 380.4 189.2 378.8C271.1 360.7 354.8 362.3 426.2 405C432.3 408.9 435.9 412.4 435.9 421.5C435.9 430.6 428.8 436.9 420.7 436.9zM447.6 371.3C442.4 371.3 438.9 369 435.3 367.1C372.8 330.1 279.6 315.2 196.7 337.7C191.9 339 189.3 340.3 184.8 340.3C174.1 340.3 165.4 331.6 165.4 320.9C165.4 310.2 170.6 303.1 180.9 300.2C208.7 292.4 237.1 286.6 278.7 286.6C343.6 286.6 406.3 302.7 455.7 332.1C463.8 336.9 467 343.1 467 351.8C466.9 362.6 458.5 371.3 447.6 371.3zM478.6 295.1C473.4 295.1 470.2 293.8 465.7 291.2C394.5 248.7 267.2 238.5 184.8 261.5C181.2 262.5 176.7 264.1 171.9 264.1C158.7 264.1 148.6 253.8 148.6 240.5C148.6 226.9 157 219.2 166 216.6C201.2 206.3 240.6 201.4 283.5 201.4C356.5 201.4 433 216.6 488.9 249.2C496.7 253.7 501.8 259.9 501.8 271.8C501.8 285.4 490.8 295.1 478.6 295.1z"/>
+                                    </svg>
+                                </a>
+                                <a href="https://discord.com/users/1263841243839070229" target="_blank" rel="noopener noreferrer" aria-label="Discord" data-anim="up" style="--delay:0.3s">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor" aria-hidden="true">
+                                        <path d="M524.5 133.8C524.3 133.5 524.1 133.2 523.7 133.1C485.6 115.6 445.3 103.1 404 96C403.6 95.9 403.2 96 402.9 96.1C402.6 96.2 402.3 96.5 402.1 96.9C396.6 106.8 391.6 117.1 387.2 127.5C342.6 120.7 297.3 120.7 252.8 127.5C248.3 117 243.3 106.8 237.7 96.9C237.5 96.6 237.2 96.3 236.9 96.1C236.6 95.9 236.2 95.9 235.8 95.9C194.5 103 154.2 115.5 116.1 133C115.8 133.1 115.5 133.4 115.3 133.7C39.1 247.5 18.2 358.6 28.4 468.2C28.4 468.5 28.5 468.7 28.6 469C28.7 469.3 28.9 469.4 29.1 469.6C73.5 502.5 123.1 527.6 175.9 543.8C176.3 543.9 176.7 543.9 177 543.8C177.3 543.7 177.7 543.4 177.9 543.1C189.2 527.7 199.3 511.3 207.9 494.3C208 494.1 208.1 493.8 208.1 493.5C208.1 493.2 208.1 493 208 492.7C207.9 492.4 207.8 492.2 207.6 492.1C207.4 492 207.2 491.8 206.9 491.7C191.1 485.6 175.7 478.3 161 469.8C160.7 469.6 160.5 469.4 160.3 469.2C160.1 469 160 468.6 160 468.3C160 468 160 467.7 160.2 467.4C160.4 467.1 160.5 466.9 160.8 466.7C163.9 464.4 167 462 169.9 459.6C170.2 459.4 170.5 459.2 170.8 459.2C171.1 459.2 171.5 459.2 171.8 459.3C268 503.2 372.2 503.2 467.3 459.3C467.6 459.2 468 459.1 468.3 459.1C468.6 459.1 469 459.3 469.2 459.5C472.1 461.9 475.2 464.4 478.3 466.7C478.5 466.9 478.7 467.1 478.9 467.4C479.1 467.7 479.1 468 479.1 468.3C479.1 468.6 479 468.9 478.8 469.2C478.6 469.5 478.4 469.7 478.2 469.8C463.5 478.4 448.2 485.7 432.3 491.6C432.1 491.7 431.8 491.8 431.6 492C431.4 492.2 431.3 492.4 431.2 492.7C431.1 493 431.1 493.2 431.1 493.5C431.1 493.8 431.2 494 431.3 494.3C440.1 511.3 450.1 527.6 461.3 543.1C461.5 543.4 461.9 543.7 462.2 543.8C462.5 543.9 463 543.9 463.3 543.8C516.2 527.6 565.9 502.5 610.4 469.6C610.6 469.4 610.8 469.2 610.9 469C611 468.8 611.1 468.5 611.1 468.2C623.4 341.4 590.6 231.3 524.2 133.7zM222.5 401.5C193.5 401.5 169.7 374.9 169.7 342.3C169.7 309.7 193.1 283.1 222.5 283.1C252.2 283.1 275.8 309.9 275.3 342.3C275.3 375 251.9 401.5 222.5 401.5zM417.9 401.5C388.9 401.5 365.1 374.9 365.1 342.3C365.1 309.7 388.5 283.1 417.9 283.1C447.6 283.1 471.2 309.9 470.7 342.3C470.7 375 447.5 401.5 417.9 401.5z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- ABOUT PAGE -->
+            <section class="page about-page" id="about">
+                <div class="aboutwrap">
+                    <div class="aboutme">
+                        <p data-anim="up" style="--delay:0.10s">Hi, I'm Vassy. I'm a 16-year-old software and web developer based in Europe, with an interest in building things and understanding how they work, and a slight obsession with cats.</p>
+                        <p data-anim="up" style="--delay:0.18s">
+                            I started programming around three years ago out of curiosity about what goes on behind the software and websites I use every day. I initially learned
+                            <a href="https://www.lua.org/" target="_blank" rel="noopener noreferrer">Lua</a> and
+                            <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer">Python</a>
+                            before moving into web development with
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer">JavaScript</a>.
+                            More recently, I've started exploring
+                            <a href="https://isocpp.org/" target="_blank" rel="noopener noreferrer">C++</a> and
+                            <a href="https://www.rust-lang.org/" target="_blank" rel="noopener noreferrer">Rust</a>,
+                            expanding my interests into lower-level programming and software development.
+                        </p>
+                        <p data-anim="up" style="--delay:0.26s">
+                            I'm currently working on a
+                            <a href="https://github.com/jarabum/bitecoin" target="_blank" rel="noopener noreferrer">cryptocurrency project</a>
+                            alongside a number of smaller personal projects. Some of my work is available on
+                            <a href="https://github.com/wxve2earth" target="_blank" rel="noopener noreferrer">GitHub</a>,
+                            while other projects remain private, depending on their purpose and stage of development.
+                            You can also explore my <a href="#projects">projects</a> here on my website.
+                            I enjoy experimenting with new ideas and learning something new with every project.
+                        </p>
+                        <p data-anim="up" style="--delay:0.34s">Outside of programming, I spend my time gaming, listening to music, and working out. These interests give me a break from coding while keeping a balance between the things I enjoy.</p>
+                    </div>
+                    <div class="aboutsidebar" data-anim="right" style="--delay:0.30s">
+                        <div class="timezone">
+                            <span class="timezonetitle">My timezone</span>
+                            <a class="timezonedata" id="timezonedata" href="https://time.is/European_Union" target="_blank" rel="noopener noreferrer">00:00</a>
+                        </div>
+                        <div class="weather">
+                            <span class="weathertitle">My weather</span>
+                            <a class="weatherdata" id="weatherdata" href="https://www.accuweather.com/en/cz/prague/125594/weather-forecast/125594" target="_blank" rel="noopener noreferrer">00°C / 00°F</a>
+                        </div>
+                        <div class="since">
+                            <span class="sincetitle">Actively coding since</span>
+                            <a class="sincedata" id="sincedata" href="https://www.timer.ly/since/2023-11-27T00:00:00" target="_blank" rel="noopener noreferrer">Nov 27, 2023</a>
+                        </div>
+                        <div class="discord">
+                            <span class="discordtitle">My discord server</span>
+                            <a class="discorddata" id="discorddata" href="https://discord.com/invite/2KBxTeQDTK" target="_blank" rel="noopener noreferrer">discord.gg/0x274</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- PROJECTS PAGE -->
+            <section class="page projects-page" id="projects">
+                <div class="projectswrap">
+                    <div class="projectsheading" data-anim="up" style="--delay:0.10s">
+                        <p class="projectstitle">Projects.</p>
+                        <p class="projectssubtitle">"A glimpse at what I've created along the way."</p>
+                    </div>
+                    <div class="projectslist" id="projectsList"></div>
+                </div>
+            </section>
+            <!-- CONTACT PAGE -->
+            <section class="page contact-page" id="contact">
+                <form class="contactform" id="contactForm" novalidate>
+                    <div class="contactheading" data-anim="up" style="--delay:0.10s">
+                        <p class="contacttitle">Get in touch.</p>
+                        <p class="contactsubtitle">Whatever brings you here, I'd love to hear from you.</p>
+                    </div>
+                    <label class="contactfield" data-anim="up" style="--delay:0.18s">
+                        <span class="contactlabel">Your name</span>
+                        <input class="contactinput" type="text" name="name" placeholder="Silly Businessman" autocomplete="name" maxlength="80" required>
+                    </label>
+                    <label class="contactfield" data-anim="up" style="--delay:0.24s">
+                        <span class="contactlabel">Your email</span>
+                        <input class="contactinput" type="email" name="email" placeholder="professional.cat@meow.com" autocomplete="email" maxlength="120" required>
+                    </label>
+                    <label class="contactfield" data-anim="up" style="--delay:0.30s">
+                        <span class="contactlabel">Subject</span>
+                        <input class="contactinput" type="text" name="subject" placeholder="A crazy story" maxlength="100" required>
+                    </label>
+                    <div class="contactfield" data-anim="up" style="--delay:0.36s">
+                        <label class="contactlabel" for="contactMessage">Message</label>
+                        <div class="contacteditor">
+                            <div class="contacttoolbar">
+                                <div class="contacttools">
+                                    <button type="button" class="contacttool" data-format="bold" aria-label="Bold">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bold preview-icon"><path d="M6 12h9a4 4 0 0 1 0 8H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h7a4 4 0 0 1 0 8"/></svg>
+                                    </button>
+                                    <button type="button" class="contacttool" data-format="italic" aria-label="Italic">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-italic preview-icon"><line x1="19" x2="10" y1="4" y2="4"/><line x1="14" x2="5" y1="20" y2="20"/><line x1="15" x2="9" y1="4" y2="20"/></svg>
+                                    </button>
+                                    <button type="button" class="contacttool" data-format="link" aria-label="Link">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link preview-icon"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                                    </button>
+                                    <button type="button" class="contacttool" data-format="image" aria-label="Attach files">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-image preview-icon"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                                    </button>
+                                </div>
+                                <span class="contactcount" id="contactCount">0/1000</span>
+                            </div>
+                            <textarea class="contacttextarea" id="contactMessage" name="message" maxlength="1000" placeholder="Let me cook..." required></textarea>
+                        </div>
+                    </div>
+                    <div class="contacthp" aria-hidden="true">
+                        <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+                    </div>
+                    <input type="file" id="contactFiles" multiple hidden>
+                    <ul class="contactfiles" id="contactFileList"></ul>
+                    <p class="contactnote" id="contactNote" role="status"></p>
+                    <button type="submit" class="contactsend" id="contactSend" data-anim="up" style="--delay:0.44s">send message</button>
+                </form>
+                <p class="contactalternative" data-anim="up" style="--delay:0.48s">Or feel free to message me directly on <a href="https://discord.com/users/1263841243839070229" target="_blank" rel="noopener noreferrer">Discord</a> or join my <a href="https://discord.com/invite/2KBxTeQDTK" target="_blank" rel="noopener noreferrer">server</a>.</p>
+            </section>
+        </div>
+        <!-- NAVIGATION DOTS -->
+        <div class="page-dots" id="pageDots" aria-hidden="true">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+        <!-- SCROLL DOWN HINT -->
+        <div class="scrolldownwrap">
+            <a href="#about" class="scrolldown">
+                <p>Scroll for more</p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 18L12 22L16 18"/><path d="M12 2V22"/></svg>
+            </a>
+        </div>
+    </div>
+    <!-- SCRIPTS -->
+    <script src="js/enter.js"></script>
+    <script src="js/sections.js"></script>
+    <script src="js/typewriter.js"></script>
+    <script src="js/dark-light.js"></script>
+    <script src="js/music.js"></script>
+    <script src="js/sounds.js"></script>
+    <script src="js/localtime.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/projects.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>
