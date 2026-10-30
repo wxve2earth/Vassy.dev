@@ -2,18 +2,26 @@ const projects = [
     {
         name: "Bitecoin",
         description: "A simple cryptocurrency built from scratch in Rust with a friend.",
-        date: "October 16, 2026",
+        date: "October 15, 2026",
         important: true,
-        pinned: true,
+        pinned: false,
         url: "https://github.com/jarabum/bitecoin"
     },
     {
         name: "Personal website",
         description: "Yep, this is the very website you're browsing right now. Hope you like it!",
-        date: "October 28, 2026",
+        date: "October 30, 2026",
         important: true,
         pinned: true,
         url: "https://github.com/wxve2earth/Vassy.dev"
+    },
+    {
+        name: "Livecord",
+        description: "Self-hosted Discord presence API providing live user data through REST and WebSocket.",
+        date: "October 30, 2026",
+        important: false,
+        pinned: false,
+        url: "https://github.com/wxve2earth/Livecord"
     },
 ];
 
