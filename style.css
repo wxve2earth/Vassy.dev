@@ -46,6 +46,7 @@ body {
     --nav-duration: 0.675s;
 
     --intro-easing: cubic-bezier(0.17, 0.84, 0.44, 1);
+    --tooltip-delay: 0.15s;
 }
 
 body.light {
@@ -336,6 +337,7 @@ body {
     opacity: 1;
     visibility: visible;
     transform: translate(-50%, 0);
+    transition-delay: var(--tooltip-delay);
 }
 
 /* --- Social Links --- */
@@ -1327,6 +1329,7 @@ body.light {
     opacity: 1;
     visibility: visible;
     transform: translate(-50%, 0);
+    transition-delay: var(--tooltip-delay);
 }
 
 /* --- Profile Names & Platforms --- */
@@ -1609,6 +1612,7 @@ body.light {
     opacity: 1;
     visibility: visible;
     transform: translate(-50%, 0);
+    transition-delay: var(--tooltip-delay);
 }
 
 /* --- Graph Legend --- */
