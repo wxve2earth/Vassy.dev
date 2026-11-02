@@ -2,8 +2,7 @@ const DASHBOARD = {
     discordUserId: "1263841243839070229",
     discordInvite: "2KBxTeQDTK",
     githubUser: "wxve2earth",
-    weeks: 52,
-    livecord: { host: "localhost:5000", secure: false }
+    weeks: 52
 };
 
 (() => {
@@ -128,14 +127,14 @@ const DASHBOARD = {
 
     setInterval(tickProgress, 1000);
 
-    /* ---------- profile (name, handle, picture) ---------- */
+    /* ---------- profile ---------- */
 
     const PROFILE_KEY = "dash:profile";
 
     let presence = null;
-    let gotLiveData = false;       // true while Livecord is sending data
-    let livecordFailed = false;    // true once Livecord couldn't be reached
-    let inviterProfile = null;     // your profile from Discord's official invite API
+    let gotLiveData = false;
+    let livecordFailed = false;
+    let inviterProfile = null;
 
     function showProfile({ name, handle, avatar }) {
         $("discordName").textContent = name;
@@ -179,8 +178,6 @@ const DASHBOARD = {
         renderSpotify(null);
     }
 
-    /* Livecord can't be reached: hide Spotify and the status badge, and keep the profile
-       filled in from Discord's official invite API (or the last profile we saved) */
     function livecordDown() {
         if (gotLiveData) return;
 
@@ -211,19 +208,17 @@ const DASHBOARD = {
 
     /* ---------- livecord connection ---------- */
 
-    const LC = DASHBOARD.livecord;
-    const LC_HTTP = `${LC.secure ? "https" : "http"}://${LC.host}`;
-    const LC_WS = `${LC.secure ? "wss" : "ws"}://${LC.host}/socket`;
+    const LC_WS = `${location.protocol === "https:" ? "wss" : "ws"}://${location.host}/socket`;
 
     let socket = null;
     let heartbeat = null;
     let retryTimer = null;
     let retryDelay = 1000;
-    let restTried = false;         // the one-off request is only tried once while Livecord is down
+    let restTried = false;
 
     async function loadPresenceOnce() {
         try {
-            const json = await getJSON(`${LC_HTTP}/v1/users/${DASHBOARD.discordUserId}`);
+            const json = await getJSON(`/v1/users/${DASHBOARD.discordUserId}`);
 
             if (gotLiveData) return;
 
@@ -427,7 +422,7 @@ const DASHBOARD = {
         } catch {}
     }
 
-    /* ---------- discord server (and your profile as a fallback) ---------- */
+    /* ---------- discord server ---------- */
 
     async function loadServer() {
         try {
@@ -457,7 +452,6 @@ const DASHBOARD = {
                 );
             }
 
-            // the invite also says who created it, which gives us your profile from the official API
             const inviter = invite.inviter;
 
             if (inviter && inviter.id === DASHBOARD.discordUserId) {
