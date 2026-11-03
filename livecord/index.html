@@ -1,12 +1,93 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Livecord — Discord Data API</title>
+    <meta name="theme-color" content="#0d0d12">
+    <title>Livecord — Your Discord. Connected.</title>
+    <meta name="description" content="A Discord-powered data API providing live user data through REST and WebSocket.">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Livecord</h1>
-    <p>A Discord data API providing live user data through REST and WebSocket.</p>
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <span class="logo-icon">L</span>
+            <span>livecord</span>
+        </a>
+        <div class="nav-links">
+            <a href="https://github.com/wxve2earth" class="nav-link" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a href="https://discord.com/invite/TE8tZVcv85" class="nav-discord" target="_blank" rel="noopener noreferrer">Join Discord <span>↗</span></a>
+        </div>
+    </nav>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="eyebrow">
+                    <span class="status-dot"></span>
+                    DISCORD-POWERED DATA API
+                </div>
+                <h1>Your Discord.<br><span>Connected.</span></h1>
+                <p class="hero-description">
+                    Live Discord user data, presence and activities,
+                    accessible through REST and WebSocket.
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://discord.com/invite/TE8tZVcv85" class="button button-primary" target="_blank" rel="noopener noreferrer">
+                        Join the Discord <span>→</span>
+                    </a>
+                    <a href="#api" class="button button-secondary">Get started <span>↓</span></a>
+                </div>
+                <p class="join-note">Join the Livecord Discord server to make your data accessible through the API.</p>
+            </div>
+            <div class="api-preview" id="api">
+                <div class="preview-header">
+                    <div class="preview-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <span class="preview-label">$API_RESPONSE</span>
+                    <span class="response-status">200 OK</span>
+                </div>
+                <div class="request-bar">
+                    <span class="request-method">GET</span>
+                    <span>/livecord/v1/users/your_discord_id</span>
+                </div>
+                <pre class="json"><code>{
+  <span class="json-key">"success"</span>: <span class="json-boolean">true</span>,
+  <span class="json-key">"data"</span>: {
+    <span class="json-key">"discord_status"</span>: <span class="json-string">"online"</span>,
+    <span class="json-key">"platforms"</span>: [<span class="json-string">"desktop"</span>],
+    <span class="json-key">"activities"</span>: [...]
+  }
+}</code></pre>
+            </div>
+        </section>
+        <section class="features">
+            <div class="section-heading">
+                <span class="eyebrow">WHAT POWERS LIVECORD</span>
+                <h2>Simple access. <span>Live data.</span></h2>
+            </div>
+            <div class="feature-grid">
+                <a href="https://github.com/wxve2earth/livecord#rest-api" class="feature-card" target="_blank" rel="noopener noreferrer">
+                    <div class="feature-icon">↗</div>
+                    <h3>REST API</h3>
+                    <p>Retrieve structured Discord user data through simple JSON endpoints.</p>
+                    <span class="feature-tag">HTTP · JSON ↗</span>
+                </a>
+                <a href="https://github.com/wxve2earth/livecord#websocket" class="feature-card" target="_blank" rel="noopener noreferrer">
+                    <div class="feature-icon">⌁</div>
+                    <h3>WebSocket</h3>
+                    <p>Receive real-time updates as a user's Discord presence and activities change.</p>
+                    <span class="feature-tag">REAL-TIME · WS ↗</span>
+                </a>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <span>LIVECORD API</span>
+        <span>Made by <a href="https://vassy.dev">Vassy</a></span>
+    </footer>
 </body>
 </html>
