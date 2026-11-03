@@ -210,7 +210,7 @@ const DASHBOARD = {
 
     const API_BASE = "https://vassy.dev";
 
-    const LC_WS = "wss://vassy.dev/socket";
+    const LC_WS = "wss://vassy.dev/livecord/socket";
 
     let socket = null;
     let heartbeat = null;
@@ -220,7 +220,7 @@ const DASHBOARD = {
 
     async function loadPresenceOnce() {
         try {
-            const json = await getJSON(`${API_BASE}/v1/users/${DASHBOARD.discordUserId}`);
+            const json = await getJSON(`${API_BASE}/livecord/v1/users/${DASHBOARD.discordUserId}`);
 
             if (gotLiveData) return;
 
