@@ -2,7 +2,7 @@ const projects = [
     {
         name: "Portfolio",
         description: "Yep, this is the very website you're browsing right now. Hope you like it!",
-        date: "October 31, 2026",
+        date: "November 3, 2026",
         important: true,
         pinned: true,
         url: "https://github.com/wxve2earth/Vassy.dev"
