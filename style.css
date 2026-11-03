@@ -639,7 +639,7 @@ body.entered .scrolldown {
     position: relative;
     display: flex;
     flex-direction: column;
-    width: min(480px, calc(100% - 72px));
+    width: min(500px, calc(100% - 72px));
     gap: 14px;
     --field-border: color-mix(in srgb, var(--muted-foreground) 35%, transparent);
 }
@@ -657,6 +657,7 @@ body.entered .scrolldown {
     color: var(--muted-foreground);
     font-size: 17px;
     font-weight: 400;
+    font-style: italic;
 }
 
 /* --- Form Fields & Editor --- */
