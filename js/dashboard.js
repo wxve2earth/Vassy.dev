@@ -208,7 +208,9 @@ const DASHBOARD = {
 
     /* ---------- livecord connection ---------- */
 
-    const LC_WS = `${location.protocol === "https:" ? "wss" : "ws"}://${location.host}/socket`;
+    const API_BASE = "https://vassy.dev";
+
+    const LC_WS = "wss://vassy.dev/socket";
 
     let socket = null;
     let heartbeat = null;
@@ -218,7 +220,7 @@ const DASHBOARD = {
 
     async function loadPresenceOnce() {
         try {
-            const json = await getJSON(`/v1/users/${DASHBOARD.discordUserId}`);
+            const json = await getJSON(`${API_BASE}/v1/users/${DASHBOARD.discordUserId}`);
 
             if (gotLiveData) return;
 
