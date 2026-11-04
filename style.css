@@ -631,6 +631,16 @@ body.entered .scrolldown {
 ======================================== */
 
 /* --- Layout & Form --- */
+.turnstile-container {
+    display: flex;
+    justify-content: center;
+    margin: 18px 0;
+}
+
+.turnstile-container[hidden] {
+    display: none;
+}
+
 .contact-page {
     flex-direction: column;
 }

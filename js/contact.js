@@ -158,18 +158,83 @@ function resetForm() {
     updateCount();
 }
 
-contactForm.addEventListener("submit", async event => {
+const turnstileContainer = document.getElementById("turnstile-container");
+const TURNSTILE_SITE_KEY = "0x4AAAAAAFzk59yL6EyXEzak";
+
+let turnstileWidgetId = null;
+let verificationPending = false;
+
+function removeTurnstile() {
+    if (turnstileWidgetId !== null && window.turnstile) {
+        window.turnstile.remove(turnstileWidgetId);
+    }
+
+    turnstileWidgetId = null;
+    turnstileContainer.replaceChildren();
+    turnstileContainer.hidden = true;
+}
+
+contactForm.addEventListener("submit", event => {
     event.preventDefault();
 
-    if (sendBtn.disabled) return;
+    if (sendBtn.disabled || verificationPending) return;
 
     if (!contactForm.checkValidity() || !messageBox.value.trim()) {
         contactForm.reportValidity();
         return;
     }
 
+    if (!window.turnstile) {
+        showNote("Verification is still loading. Please try again.");
+        return;
+    }
+
+    verificationPending = true;
+    sendBtn.textContent = "verify to send";
+    showNote("Please complete the verification below.");
+
+    turnstileContainer.hidden = false;
+
+    try {
+        turnstileWidgetId = window.turnstile.render(
+            "#turnstile-container",
+            {
+                sitekey: TURNSTILE_SITE_KEY,
+
+                callback: token => {
+                    verificationPending = false;
+                    sendContactForm(token);
+                },
+
+                "error-callback": () => {
+                    verificationPending = false;
+                    showNote("Verification failed. Please try again.");
+                    sendBtn.textContent = "send message";
+                },
+
+                "expired-callback": () => {
+                    verificationPending = false;
+                    showNote("Verification expired. Please try again.");
+                    sendBtn.textContent = "send message";
+                }
+            }
+        );
+    } catch {
+        verificationPending = false;
+        removeTurnstile();
+        sendBtn.textContent = "send message";
+        showNote("Couldn't load verification. Please try again.");
+    }
+});
+
+async function sendContactForm(token) {
     const formData = new FormData(contactForm);
-    files.forEach(file => formData.append("files", file, file.name));
+
+    files.forEach(file => {
+        formData.append("files", file, file.name);
+    });
+
+    formData.append("cf-turnstile-response", token);
 
     sendBtn.disabled = true;
     sendBtn.textContent = "sending...";
@@ -187,14 +252,18 @@ contactForm.addEventListener("submit", async event => {
 
         if (!response.ok) {
             let reason = "Something went wrong. Please try again.";
+
             try {
                 const data = await response.json();
                 if (data.error) reason = data.error;
             } catch {}
+
             throw new Error(reason);
         }
 
         resetForm();
+        removeTurnstile();
+
         sendBtn.textContent = "sent!";
         showNote("Thanks, your message was sent.");
 
@@ -203,15 +272,20 @@ contactForm.addEventListener("submit", async event => {
             sendBtn.disabled = false;
             showNote("");
         }, 4000);
+
     } catch (error) {
         showNote(
             error.name === "AbortError"
                 ? "The request timed out. Please try again."
                 : error.message || "Couldn't send. Please try again."
         );
+
+        removeTurnstile();
+
         sendBtn.textContent = "send message";
         sendBtn.disabled = false;
+
     } finally {
         clearTimeout(timeout);
     }
-});
+}
