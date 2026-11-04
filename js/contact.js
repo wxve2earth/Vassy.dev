@@ -6,7 +6,7 @@ const fileList = document.getElementById("contactFileList");
 const noteEl = document.getElementById("contactNote");
 const sendBtn = document.getElementById("contactSend");
 
-const WORKER_URL = "https://portfolio-contact.vasikagggs.workers.dev";
+const WORKER_URL = "https://contact.venda503.workers.dev";
 
 const MAX_FILES = 3;
 const MAX_TOTAL_MB = 10;
