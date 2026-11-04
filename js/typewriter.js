@@ -3,7 +3,7 @@ const config = {
         "Developer & Designer",
         "full-stack dev",
         "#1 cat enthusiast",
-        "discord.gg/0x274",
+        "I use arch btw",
         "@m4nsion on discord"
     ],
 
