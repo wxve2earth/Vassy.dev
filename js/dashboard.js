@@ -1,6 +1,6 @@
 const DASHBOARD = {
     discordUserId: "1263841243839070229",
-    discordInvite: "2KBxTeQDTK",
+    discordInvite: "KHdJqAmCtc",
     githubUser: "wxve2earth",
     weeks: 52
 };
