@@ -6,7 +6,7 @@ const sounds = {
     key3: new Audio("sounds/k3.wav"),
 };
 
-const volume = 0.25
+const volume = 0.32
 
 Object.values(sounds).forEach(sound => {
     sound.preload = "auto";
