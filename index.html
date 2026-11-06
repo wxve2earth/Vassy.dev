@@ -32,21 +32,9 @@
         <div class="nav" id="nav">
             <div class="music-controls">
                 <button type="button" id="musicMute" aria-label="Mute music">
-                    <svg id="musicIcon" xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M11 5 6 9H2v6h4l5 4V5z"/>
-                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
-                    </svg>
+                    <svg id="musicIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
                 </button>
-                <input
-                    type="range"
-                    id="musicVolume"
-                    min="0"
-                    max="100"
-                    value="10"
-                    aria-label="Music volume"
-                >
+                <input type="range" id="musicVolume" min="0" max="100" value="10" aria-label="Music volume">
             </div>
             <div class="nav-right">
                 <a href="#home" class="active">Home</a>
@@ -363,6 +351,7 @@
     <!-- SCRIPTS -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
     <script src="js/enter.js"></script>
+    <script src="js/tilt.js"></script>
     <script src="js/sections.js"></script>
     <script src="js/typewriter.js"></script>
     <script src="js/dark-light.js"></script>
