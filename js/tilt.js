@@ -22,6 +22,26 @@
     let finished = null;
     let start = null;
 
+    const REST = { x: 73, y: 96 };
+    let lx = REST.x, ly = REST.y, tx = REST.x, ty = REST.y, lightRaf = 0;
+
+    function setLight(x, y) {
+        tx = x; ty = y;
+        if (!lightRaf) lightRaf = requestAnimationFrame(stepLight);
+    }
+
+    function stepLight() {
+        lx += (tx - lx) * 0.12;   // lower = slower, floatier
+        ly += (ty - ly) * 0.12;
+        if (tilt) {
+            tilt.style.setProperty('--lx', lx.toFixed(2) + '%');
+            tilt.style.setProperty('--ly', ly.toFixed(2) + '%');
+        }
+        lightRaf = (tilt && (Math.abs(tx - lx) > 0.05 || Math.abs(ty - ly) > 0.05))
+            ? requestAnimationFrame(stepLight)
+            : 0;
+    }
+
     function resetTilt() {
         if (!tilt) return;
         tilt.classList.remove('tracking');
@@ -29,7 +49,7 @@
         tilt.style.setProperty('--ry', '0deg');
         tilt.style.setProperty('--mx', '50%');
         tilt.style.setProperty('--my', '50%');
-        tilt.style.setProperty('--shine', '0.35');
+        setLight(REST.x, REST.y);
     }
 
     function onMove(e) {
@@ -44,7 +64,7 @@
         tilt.style.setProperty('--rx', ((0.5 - y) * MAX_TILT * 2).toFixed(2) + 'deg');
         tilt.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
         tilt.style.setProperty('--my', (y * 100).toFixed(1) + '%');
-        tilt.style.setProperty('--shine', (0.5 + ((x - 0.5) + (y - 0.5)) * 0.35).toFixed(3));
+        setLight(REST.x - (x - 0.5) * 60, REST.y - (y - 0.5) * 40);
     }
 
     function open() {
@@ -76,6 +96,7 @@
         zoom.innerHTML =
             '<div class="pfp-tilt"><img alt=""><div class="pfp-glare"></div></div>';
         tilt = zoom.firstElementChild;
+        lx = tx = REST.x; ly = ty = REST.y;
         tilt.style.borderRadius = start.radius;
         tilt.style.boxShadow = start.shadow;
         tilt.querySelector('img').src = srcImg.currentSrc || srcImg.src;

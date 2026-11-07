@@ -10,12 +10,6 @@
     font-display: swap;
 }
 
-@property --shine {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 0.35;
-}
-
 * {
     box-sizing: border-box;
 }
@@ -53,6 +47,12 @@ body {
 
     --intro-easing: cubic-bezier(0.17, 0.84, 0.44, 1);
     --tooltip-delay: 0.15s;
+
+    --contrib-0: #433e35;
+    --contrib-1: #4a5a3a;
+    --contrib-2: #5f7a45;
+    --contrib-3: #769a52;
+    --contrib-4: #94bd68;
 }
 
 body.light {
@@ -63,6 +63,12 @@ body.light {
     --pfp-border: color-mix(in srgb, var(--foreground) 25%, var(--background));
     --badge-background: rgba(69, 60, 48, 0.12);
     --badge-border: rgba(69, 60, 48, 0.14);
+
+    --contrib-0: #ddd5c6;
+    --contrib-1: #c9d6a8;
+    --contrib-2: #a4bf7c;
+    --contrib-3: #78a04e;
+    --contrib-4: #4f7a2e;
 }
 
 /* --- Global Body --- */
@@ -71,7 +77,24 @@ body {
     color: var(--foreground);
     font-family: "Onest", sans-serif;
     font-weight: 300;
-    transition: background-color 0.3s, color 0.3s;
+}
+
+/* --- Theme Switch Wipe --- */
+/* dark-light.js animates the new page itself, so the default cross-fade is switched off */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+::view-transition-old(root) { z-index: 1; }
+::view-transition-new(root) { z-index: 2; }
+
+/* hover and focus transitions would otherwise run in the middle of the wipe */
+html.theme-switching *:not(.theme-icon),
+html.theme-switching *::before,
+html.theme-switching *::after {
+    transition: none !important;
 }
 
 
@@ -229,11 +252,16 @@ body {
     display: block;
     border-radius: 12px;
     box-shadow: 0 0 0 3px var(--pfp-border);
-    transition: box-shadow 0.3s ease;
 }
 
 .heropfp {
     cursor: pointer;
+}
+
+@property --shine {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0.35;
 }
 
 .pfp-backdrop {
@@ -272,6 +300,8 @@ body {
     --rx: 0deg;
     --ry: 0deg;
     --shine: 0.35;
+    --lx: 73%;
+    --ly: 96%;
 
     position: relative;
     width: 100%;
@@ -281,16 +311,14 @@ body {
     transition:
         transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
         border-radius 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-        box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-        --shine 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .pfp-tilt.tracking {
     transition:
         transform 0.1s linear,
         border-radius 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-        box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-        --shine 0.1s linear;
+        box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
  
 .pfp-tilt img {
@@ -309,11 +337,11 @@ body {
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.5s ease;
-    background: linear-gradient(
-        120deg,
-        transparent calc(var(--shine) * 100% - 35%),
-        rgb(255 255 255 / 0.015) calc(var(--shine) * 100%),
-        transparent calc(var(--shine) * 100% + 35%)
+    background: radial-gradient(
+        ellipse 75% 60% at var(--lx) var(--ly),
+        rgb(255 255 255 / 0.01) 0%,
+        rgb(255 255 255 / 0.0085) 40%,
+        transparent 100%
     );
 }
 
@@ -321,10 +349,7 @@ body {
     opacity: 1;
 }
 
-.pfp-zoom.lit .pfp-glare {
-    opacity: 1;
-}
- 
+
 @media (prefers-reduced-motion: reduce) {
     .pfp-zoom,
     .pfp-backdrop {
@@ -385,7 +410,6 @@ body {
     border-radius: 25px;
     background: var(--badge-background);
     border: 2px solid var(--badge-border);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .badge {
@@ -465,14 +489,13 @@ body {
     flex-shrink: 0;
     color: var(--icon);
     text-decoration: none;
-    transition: color 0.3s ease;
 }
 
 .herolinks a svg {
     width: 100%;
     height: 100%;
     display: block;
-    transition: color 0.3s ease, transform 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .herolinks a:hover svg {
@@ -689,7 +712,6 @@ body.light .moon-icon {
     color: var(--foreground);
     text-decoration: none;
     pointer-events: auto;
-    transition: color 0.2s ease;
     opacity: 0;
 }
 
@@ -1077,7 +1099,7 @@ body.entered .scrolldown {
     font-size: 15px;
     font-weight: 550;
     cursor: pointer;
-    transition: scale 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    transition: scale 0.2s ease;
 }
 
 .contactsend:hover:not(:disabled) {
@@ -1231,7 +1253,6 @@ body.entered .scrolldown {
     width: var(--line-width);
     border-radius: 1px;
     background: color-mix(in srgb, var(--muted-foreground) 55%, transparent);
-    transition: background-color 0.3s ease;
 }
 
 .project::before {
@@ -1246,10 +1267,6 @@ body.entered .scrolldown {
     border: 2px solid var(--muted-foreground);
     background: var(--background);
     transform: translateX(-50%);
-    transition:
-        transform 0.2s ease,
-        background-color 0.3s ease,
-        border-color 0.3s ease;
 }
 
 .project.important::before {
@@ -1358,23 +1375,6 @@ body.entered .scrolldown {
    DASHBOARD
 =================================================== */
 
-/* --- Theme Variables --- */
-:root {
-    --contrib-0: #433e35;
-    --contrib-1: #4a5a3a;
-    --contrib-2: #5f7a45;
-    --contrib-3: #769a52;
-    --contrib-4: #94bd68;
-}
-
-body.light {
-    --contrib-0: #ddd5c6;
-    --contrib-1: #c9d6a8;
-    --contrib-2: #a4bf7c;
-    --contrib-3: #78a04e;
-    --contrib-4: #4f7a2e;
-}
-
 /* --- Dashboard Layout --- */
 .dashboardwrap {
     --dash-surface: color-mix(in srgb, var(--background) 95%, black);
@@ -1400,9 +1400,7 @@ body.light {
     border-radius: 14px;
     color: inherit;
     text-decoration: none;
-    transition:
-        background-color 0.3s ease,
-        border-color 0.3s ease;
+    transition: border-color 0.3s ease;
 }
 
 .dashlinkcard:hover,
@@ -1444,7 +1442,6 @@ body.light {
     color: var(--muted-foreground);
     overflow: visible;
     box-shadow: 0 0 0 2px var(--pfp-border);
-    transition: box-shadow 0.3s ease;
 }
 
 .dashavatar {
@@ -1484,7 +1481,6 @@ body.light {
     background-size: var(--status-icon);
     background-position: center;
     background-repeat: no-repeat;
-    transition: background-color 0.3s ease;
 }
 
 .dashstatus[data-status="online"] { background-image: url("pictures/icons/online.png"); }
@@ -1677,7 +1673,6 @@ body.light {
     height: 2px;
     margin: 16px 0;
     background: var(--dash-border);
-    transition: background-color 0.3s ease;
 }
 
 /* ========================================
@@ -1758,7 +1753,6 @@ body.light {
 .dashcell {
     border-radius: 2px;
     background: var(--contrib-0);
-    transition: background-color 0.3s ease;
     position: relative;
     display: block;
 }
