@@ -1,3 +1,9 @@
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "light") {
+    document.body.classList.add("light");
+}
+
 const toggle = document.getElementById("themeToggle");
 const pfp = document.getElementById("pfp");
 
@@ -6,10 +12,9 @@ const pfpSources = {
     dark: "pictures/pfp2.png"
 };
 
-// load both pictures up front so the swap is instant
 Object.values(pfpSources).forEach((src) => { new Image().src = src; });
 
-const PFP_EFFECT = "flip";      // "flip", "blur" or "iris" (used when the page wipe isn't available)
+const PFP_EFFECT = "flip";
 
 const pfpEffects = {
     flip: {
@@ -67,7 +72,6 @@ async function updatePfp(animate = true) {
 let themeChanging = false;
 const themeCooldown = 1500;
 
-// the circular wipe needs the View Transitions API
 const canWipe = typeof document.startViewTransition === "function";
 
 toggle.addEventListener("click", async () => {
@@ -78,6 +82,10 @@ toggle.addEventListener("click", async () => {
 
     const applyTheme = () => {
         document.body.classList.toggle("light");
+        localStorage.setItem(
+            "theme",
+            document.body.classList.contains("light") ? "light" : "dark"
+        );
 
         const isLight = document.body.classList.contains("light");
 
@@ -90,7 +98,6 @@ toggle.addEventListener("click", async () => {
     };
 
     if (canWipe && !reduceMotion.matches) {
-        // the circle starts at the toggle and grows until it covers the farthest corner
         const rect = toggle.getBoundingClientRect();
         const x = rect.left + rect.width / 2;
         const y = rect.top + rect.height / 2;
@@ -103,7 +110,7 @@ toggle.addEventListener("click", async () => {
 
         const transition = document.startViewTransition(async () => {
             applyTheme();
-            updatePfp(false);                    // swaps instantly; the wipe is the animation
+            updatePfp(false);
             try { await pfp.decode(); } catch {}
         });
 
@@ -130,7 +137,7 @@ toggle.addEventListener("click", async () => {
             .finally(() => document.documentElement.classList.remove("theme-switching"));
     } else {
         applyTheme();
-        updatePfp();                             // the flip, for browsers without the wipe
+        updatePfp();
     }
 
     await new Promise(resolve => setTimeout(resolve, themeCooldown));

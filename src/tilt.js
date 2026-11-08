@@ -31,7 +31,7 @@
     }
 
     function stepLight() {
-        lx += (tx - lx) * 0.12;   // lower = slower, floatier
+        lx += (tx - lx) * 0.12;
         ly += (ty - ly) * 0.12;
         if (tilt) {
             tilt.style.setProperty('--lx', lx.toFixed(2) + '%');
