@@ -210,7 +210,7 @@ function showSection(index) {
 let lastWheel = 0;
 
 window.addEventListener("wheel", event => {
-    if (!document.body.classList.contains("entered") || isEditing(event)) return;
+    if (!document.body.classList.contains("entered") || themeChanging || isEditing(event)) return;
 
     event.preventDefault();
 
@@ -246,13 +246,14 @@ window.addEventListener("wheel", event => {
 
 navLinks.forEach((link, index) => {
     link.addEventListener("click", event => {
+        if (themeChanging) return;
         event.preventDefault();
         showSection(index);
     });
 });
 
 window.addEventListener("keydown", event => {
-    if (!document.body.classList.contains("entered")) return;
+    if (!document.body.classList.contains("entered") || themeChanging) return;
 
     if (isEditing(event)) return;
 
@@ -288,7 +289,7 @@ window.addEventListener("touchstart", event => {
 }, { passive: true });
 
 window.addEventListener("touchend", event => {
-    if (!document.body.classList.contains("entered") || isScrolling || isEditing(event)) return;
+    if (!document.body.classList.contains("entered") || themeChanging || isScrolling || isEditing(event)) return;
 
     const difference = touchStartY - event.changedTouches[0].screenY;
 
@@ -308,6 +309,8 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     if (link.closest(".nav")) return;
 
     link.addEventListener("click", event => {
+        if (themeChanging) return;
+        
         const targetId = link.getAttribute("href").slice(1);
         const index = sections.findIndex(section => section.id === targetId);
 

@@ -41,6 +41,7 @@ body {
     --pfp-border: color-mix(in srgb, var(--background) 92%, var(--foreground));
     --badge-background: rgba(240, 235, 226, 0.08);
     --badge-border: rgba(240, 235, 226, 0.04);
+    --overlay-shade: rgb(0 0 0 / 0.776);
 
     --nav-delay: 0.12s;
     --nav-duration: 0.675s;
@@ -63,6 +64,7 @@ body.light {
     --pfp-border: color-mix(in srgb, var(--foreground) 25%, var(--background));
     --badge-background: rgba(69, 60, 48, 0.12);
     --badge-border: rgba(69, 60, 48, 0.14);
+    --overlay-shade: rgb(69 60 48 / 0.48);
 
     --contrib-0: #ddd5c6;
     --contrib-1: #c9d6a8;
@@ -110,7 +112,7 @@ html.theme-switching *::after {
 
 .overlay {
     z-index: 9999;
-    background: rgb(0 0 0 / 0.776);
+    background: var(--overlay-shade);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -136,17 +138,25 @@ html.theme-switching *::after {
     font-size: 30px;
     font-weight: 700;
     letter-spacing: -1.5px;
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 4px;
-    color: #fafafa;
+    color: #faf7f0;
 }
 
 .welcometext {
-    color: #b8b8b8;
+    color: #d0c8b9;
     font-size: 15px;
     font-weight: 450;
     letter-spacing: -1px;
     margin: 0;
+}
+
+body.light .welcome {
+    color: #fffaf0;
+}
+
+body.light .welcometext {
+    color: #e5dac8;
 }
 
 

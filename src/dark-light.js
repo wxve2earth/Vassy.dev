@@ -1,9 +1,3 @@
-const savedTheme = localStorage.getItem("theme");
-
-if (savedTheme === "light") {
-    document.body.classList.add("light");
-}
-
 const toggle = document.getElementById("themeToggle");
 const pfp = document.getElementById("pfp");
 
@@ -12,7 +6,17 @@ const pfpSources = {
     dark: "pictures/pfp2.png"
 };
 
-Object.values(pfpSources).forEach((src) => { new Image().src = src; });
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "light") {
+    document.body.classList.add("light");
+}
+
+pfp.src = document.body.classList.contains("light") ? pfpSources.light : pfpSources.dark;
+
+Object.values(pfpSources).forEach((src) => {
+    new Image().src = src;
+});
 
 const PFP_EFFECT = "flip";
 
@@ -75,7 +79,7 @@ const themeCooldown = 1500;
 const canWipe = typeof document.startViewTransition === "function";
 
 toggle.addEventListener("click", async () => {
-    if (themeChanging) return;
+    if (themeChanging || isScrolling) return;
 
     themeChanging = true;
     toggle.disabled = true;
