@@ -2038,6 +2038,17 @@ body.entered .scrolldown {
     background: var(--contrib-4);
 }
 
+/* --- Discord + Support Row --- */
+.dashrow-community {
+    grid-template-columns: 2fr 1fr;
+}
+
+.dashservericon svg {
+    color: var(--icon);
+    width: 26px;
+    height: 26px;
+}
+
 
 /* ========================================
    DASHBOARD: RESPONSIVE STYLES
@@ -2053,6 +2064,9 @@ body.entered .scrolldown {
 @media (max-height: 700px) {
     .dashboardwrap {
         zoom: 0.8;
+    }
+    .dashrow-community {
+        grid-template-columns: 1fr;
     }
 }
 
