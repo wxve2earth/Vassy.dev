@@ -13,32 +13,52 @@ const errors = {
 
 const params = new URLSearchParams(window.location.search);
 
-const requestedCode =
-    params.get("code") ||
-    document.body.dataset.errorCode ||
-    "404";
+async function getErrorCode() {
+    const requestedCode =
+        params.get("code") ||
+        document.body.dataset.errorCode;
 
-const parsedCode = Number.parseInt(requestedCode, 10);
+    if (requestedCode) {
+        return Number.parseInt(requestedCode, 10);
+    }
 
-const errorCode =
-    Number.isInteger(parsedCode) &&
-    errorCodeIsValid(parsedCode)
-        ? parsedCode
-        : 404;
+    try {
+        const response = await fetch(window.location.href, {
+            method: "HEAD",
+            headers: {
+                "Accept": "text/html"
+            },
+            cache: "no-store"
+        });
 
-function errorCodeIsValid(code) {
-    return code >= 400 && code <= 599;
+        return response.status;
+    } catch {
+        return 404;
+    }
 }
 
-const errorMessage =
-    errors[errorCode] ||
-    "The cat ran into an unexpected problem.";
+async function displayError() {
+    const parsedCode = await getErrorCode();
 
-document.querySelector(".error-code").textContent =
-    `${errorCode} Error`;
+    const errorCode =
+        Number.isInteger(parsedCode) &&
+        parsedCode >= 400 &&
+        parsedCode <= 599
+            ? parsedCode
+            : 404;
 
-document.querySelector("#error-title").textContent =
-    errorMessage;
+    const errorMessage =
+        errors[errorCode] ||
+        "The cat ran into an unexpected problem.";
 
-document.title =
-    `${errorCode} - Paws! Something went wrong :c`;
+    document.querySelector(".error-code").textContent =
+        `${errorCode} Error`;
+
+    document.querySelector("#error-title").textContent =
+        errorMessage;
+
+    document.title =
+        `${errorCode} - Paws! Something went wrong :c`;
+}
+
+displayError();
