@@ -1,4 +1,3 @@
-
 :root {
     --background: #343029;
     --foreground: #f0ebe2;
@@ -7,19 +6,6 @@
     --pfp-border: color-mix(in srgb, var(--background) 92%, var(--foreground));
     --badge-background: rgba(240, 235, 226, 0.08);
     --badge-border: rgba(240, 235, 226, 0.04);
-    --overlay-shade: rgb(0 0 0 / 0.776);
-
-    --nav-delay: 0.12s;
-    --nav-duration: 0.675s;
-
-    --intro-easing: cubic-bezier(0.17, 0.84, 0.44, 1);
-    --tooltip-delay: 0.15s;
-
-    --contrib-0: #433e35;
-    --contrib-1: #4a5a3a;
-    --contrib-2: #5f7a45;
-    --contrib-3: #769a52;
-    --contrib-4: #94bd68;
 }
 
 body.light {
@@ -30,13 +16,6 @@ body.light {
     --pfp-border: color-mix(in srgb, var(--foreground) 25%, var(--background));
     --badge-background: rgba(69, 60, 48, 0.12);
     --badge-border: rgba(69, 60, 48, 0.14);
-    --overlay-shade: rgb(69 60 48 / 0.48);
-
-    --contrib-0: #ddd5c6;
-    --contrib-1: #c9d6a8;
-    --contrib-2: #a4bf7c;
-    --contrib-3: #78a04e;
-    --contrib-4: #4f7a2e;
 }
 
 /* ========================================
