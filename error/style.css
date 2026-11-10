@@ -181,7 +181,7 @@ p {
 }
 
 .btn-primary:hover {
-    opacity: 0.9;
+    opacity: 0.75;
 }
 
 .btn-secondary {
@@ -193,4 +193,5 @@ p {
 
 .btn-secondary:hover {
     background-color: var(--pfp-border);
+    border-color: color-mix(in srgb, var(--foreground) 35%, transparent);
 }

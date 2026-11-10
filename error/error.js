@@ -1,4 +1,3 @@
-
 const errors = {
     400: "The cat got confused.",
     401: "You need permission to enter this territory.",
