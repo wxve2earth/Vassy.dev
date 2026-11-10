@@ -5,32 +5,56 @@ const errors = {
     404: "Nothing here. just an empty cardboard box.",
     429: "Easy there, too many paw taps!",
     500: "The cat knocked something over.",
-    503: "The cat is taking a little break."
+    502: "The cat couldn't reach the server.",
+    503: "The cat is taking a little break.",
+    504: "The cat waited too long for a response."
 };
 
 const params = new URLSearchParams(window.location.search);
 
-const requestedCode =
-    params.get("code") ||
-    document.body.dataset.errorCode ||
-    "404";
+async function getErrorCode() {
+    const requestedCode =
+        params.get("code") ||
+        document.body.dataset.errorCode;
 
-const parsedCode = Number.parseInt(requestedCode, 10);
+    if (requestedCode) {
+        return Number.parseInt(requestedCode, 10);
+    }
 
-const errorCode = Number.isInteger(parsedCode) &&
-    parsedCode >= 400 &&
-    parsedCode <= 599
-    ? parsedCode
-    : 404;
+    try {
+        const response = await fetch(window.location.href, {
+            method: "HEAD",
+            cache: "no-store"
+        });
 
-const errorMessage =
-    errors[errorCode] ||
-    "the cat ran into an unexpected problem.";
+        return response.status;
+    } catch {
+        return 404;
+    }
+}
 
-document.querySelector(".error-code").textContent =
-    `${errorCode} Error`;
+async function displayError() {
+    const parsedCode = await getErrorCode();
 
-document.querySelector("#error-title").textContent =
-    errorMessage;
+    const errorCode =
+        Number.isInteger(parsedCode) &&
+        parsedCode >= 400 &&
+        parsedCode <= 599
+            ? parsedCode
+            : 404;
 
-document.title = `${errorCode} - Paws! Something went wrong :c`;
+    const errorMessage =
+        errors[errorCode] ||
+        "The cat ran into an unexpected problem.";
+
+    document.querySelector(".error-code").textContent =
+        `${errorCode} Error`;
+
+    document.querySelector("#error-title").textContent =
+        errorMessage;
+
+    document.title =
+        `${errorCode} - Paws! Something went wrong :c`;
+}
+
+displayError();
