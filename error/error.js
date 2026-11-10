@@ -1,3 +1,4 @@
+
 const errors = {
     400: "The cat got confused.",
     401: "You need permission to enter this territory.",
@@ -12,49 +13,32 @@ const errors = {
 
 const params = new URLSearchParams(window.location.search);
 
-async function getErrorCode() {
-    const requestedCode =
-        params.get("code") ||
-        document.body.dataset.errorCode;
+const requestedCode =
+    params.get("code") ||
+    document.body.dataset.errorCode ||
+    "404";
 
-    if (requestedCode) {
-        return Number.parseInt(requestedCode, 10);
-    }
+const parsedCode = Number.parseInt(requestedCode, 10);
 
-    try {
-        const response = await fetch(window.location.href, {
-            method: "HEAD",
-            cache: "no-store"
-        });
+const errorCode =
+    Number.isInteger(parsedCode) &&
+    errorCodeIsValid(parsedCode)
+        ? parsedCode
+        : 404;
 
-        return response.status;
-    } catch {
-        return 404;
-    }
+function errorCodeIsValid(code) {
+    return code >= 400 && code <= 599;
 }
 
-async function displayError() {
-    const parsedCode = await getErrorCode();
+const errorMessage =
+    errors[errorCode] ||
+    "The cat ran into an unexpected problem.";
 
-    const errorCode =
-        Number.isInteger(parsedCode) &&
-        parsedCode >= 400 &&
-        parsedCode <= 599
-            ? parsedCode
-            : 404;
+document.querySelector(".error-code").textContent =
+    `${errorCode} Error`;
 
-    const errorMessage =
-        errors[errorCode] ||
-        "The cat ran into an unexpected problem.";
+document.querySelector("#error-title").textContent =
+    errorMessage;
 
-    document.querySelector(".error-code").textContent =
-        `${errorCode} Error`;
-
-    document.querySelector("#error-title").textContent =
-        errorMessage;
-
-    document.title =
-        `${errorCode} - Paws! Something went wrong :c`;
-}
-
-displayError();
+document.title =
+    `${errorCode} - Paws! Something went wrong :c`;
