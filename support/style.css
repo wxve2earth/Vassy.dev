@@ -73,6 +73,9 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+::selection {
+    background: rgb(155 133 105 / 40%);
+}
 
 /* ========================================
    TOP BAR

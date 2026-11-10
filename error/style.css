@@ -1,0 +1,217 @@
+
+:root {
+    --background: #343029;
+    --foreground: #f0ebe2;
+    --muted-foreground: #b0a797;
+    --icon: #f0ebe2;
+    --pfp-border: color-mix(in srgb, var(--background) 92%, var(--foreground));
+    --badge-background: rgba(240, 235, 226, 0.08);
+    --badge-border: rgba(240, 235, 226, 0.04);
+    --overlay-shade: rgb(0 0 0 / 0.776);
+
+    --nav-delay: 0.12s;
+    --nav-duration: 0.675s;
+
+    --intro-easing: cubic-bezier(0.17, 0.84, 0.44, 1);
+    --tooltip-delay: 0.15s;
+
+    --contrib-0: #433e35;
+    --contrib-1: #4a5a3a;
+    --contrib-2: #5f7a45;
+    --contrib-3: #769a52;
+    --contrib-4: #94bd68;
+}
+
+body.light {
+    --background: #eee8de;
+    --foreground: #453c30;
+    --muted-foreground: #857b6d;
+    --icon: #514638;
+    --pfp-border: color-mix(in srgb, var(--foreground) 25%, var(--background));
+    --badge-background: rgba(69, 60, 48, 0.12);
+    --badge-border: rgba(69, 60, 48, 0.14);
+    --overlay-shade: rgb(69 60 48 / 0.48);
+
+    --contrib-0: #ddd5c6;
+    --contrib-1: #c9d6a8;
+    --contrib-2: #a4bf7c;
+    --contrib-3: #78a04e;
+    --contrib-4: #4f7a2e;
+}
+
+/* ========================================
+   RESET
+======================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ========================================
+   GENERAL
+======================================== */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100vh;
+    padding: 20px;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+/* ========================================
+   CONTAINER
+======================================== */
+
+.container {
+    text-align: center;
+    max-width: 440px;
+    width: 100%;
+}
+
+/* ========================================
+   CAT ILLUSTRATION
+======================================== */
+
+.cat-illustration {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 20px;
+}
+
+.cat-illustration svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* ========================================
+   SVG COLOR MAPPINGS
+======================================== */
+
+.cat-body {
+    fill: var(--foreground);
+}
+
+.cat-ear-inner {
+    fill: color-mix(in srgb, var(--foreground) 30%, #df958c);
+}
+
+.cat-eye {
+    stroke: var(--background);
+}
+
+.counter-top {
+    fill: var(--muted-foreground);
+    opacity: 0.35;
+}
+
+.counter-edge {
+    fill: var(--muted-foreground);
+    opacity: 0.15;
+}
+
+.yarn-ball {
+    fill: color-mix(in srgb, var(--foreground) 30%, #df958c);
+}
+
+.yarn-thread {
+    stroke: color-mix(in srgb, var(--foreground) 30%, #df958c);
+}
+
+/* ========================================
+   ERROR CODE
+======================================== */
+
+.error-code {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: var(--muted-foreground);
+
+    margin-bottom: 12px;
+    display: inline-block;
+
+    padding: 4px 12px;
+
+    background-color: var(--badge-background);
+    border: 1px solid var(--badge-border);
+    border-radius: 20px;
+}
+
+/* ========================================
+   ERROR MESSAGE
+======================================== */
+
+h1 {
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--foreground);
+
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+
+    margin-bottom: 32px;
+}
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+.actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.btn {
+    display: inline-block;
+
+    padding: 12px 24px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    text-decoration: none;
+    border-radius: 8px;
+
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--foreground);
+    color: var(--background);
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+.btn-secondary {
+    background-color: var(--badge-background);
+    color: var(--foreground);
+
+    border: 1px solid var(--badge-border);
+}
+
+.btn-secondary:hover {
+    background-color: var(--pfp-border);
+}
