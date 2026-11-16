@@ -246,8 +246,8 @@ window.addEventListener("wheel", event => {
 
 navLinks.forEach((link, index) => {
     link.addEventListener("click", event => {
-        if (themeChanging) return;
         event.preventDefault();
+        if (themeChanging) return;
         showSection(index);
     });
 });
@@ -309,14 +309,14 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     if (link.closest(".nav")) return;
 
     link.addEventListener("click", event => {
-        if (themeChanging) return;
-        
         const targetId = link.getAttribute("href").slice(1);
         const index = sections.findIndex(section => section.id === targetId);
 
         if (index === -1) return;
 
         event.preventDefault();
+        if (themeChanging) return;
+
         showSection(index);
     });
 });
